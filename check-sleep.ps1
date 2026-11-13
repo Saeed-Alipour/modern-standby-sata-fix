@@ -70,7 +70,7 @@ $data = $ser.DeserializeObject($m.Groups[1].Value)
 # --- 4. Show storage setup and current setting ---
 $sataDisks = @(Get-PhysicalDisk | Where-Object BusType -eq 'SATA')
 Write-Host "SATA drives: $(if ($sataDisks) { ($sataDisks.FriendlyName) -join ', ' } else { 'none' })"
-$lpm = powercfg /q SCHEME_CURRENT 0012ee47-9041-4b5d-9b77-535fba8b1442 0b2d69d7-a2a1-449c-9680-f91c70521c60 |
+$lpm = powercfg /qh SCHEME_CURRENT 0012ee47-9041-4b5d-9b77-535fba8b1442 0b2d69d7-a2a1-449c-9680-f91c70521c60 |
        Select-String 'Current (AC|DC) Power Setting Index: 0x([0-9a-f]+)' |
        ForEach-Object { '{0}={1}' -f $_.Matches[0].Groups[1].Value, [Convert]::ToInt32($_.Matches[0].Groups[2].Value, 16) }
 $names = @{0='Active (off)';1='HIPM';2='HIPM+DIPM';3='DIPM';4='Lowest'}

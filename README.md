@@ -49,7 +49,7 @@ Then let the laptop sleep **on battery for 30+ minutes** and run `check-sleep.ps
 
 Still hot? Open `fix-sleep.cmd` in Notepad, change `set LPM_VALUE=2` to `4` ("Lowest") and run it again.
 
-The settings are kept until Windows is reinstalled or the power plan is reset, so keep a copy of this repo somewhere safe and re-run the fix after a reinstall.
+The settings are kept until Windows is reinstalled or the power plan is reset, so keep a copy of this repo somewhere safe and re-run the fix after a reinstall. A Windows feature or security update can also re-hide the setting in Power Options (it stays at HIPM+DIPM underneath, Windows just stops showing it) — `check-sleep.ps1` reads it either way, so re-run it after big updates if you want to confirm.
 
 ## Results
 
